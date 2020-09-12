@@ -5,6 +5,7 @@ import com.peerLending.userprofile.domain.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -27,6 +28,7 @@ public class ProfileController {
 
     @PostMapping("/user")
     public void newUser(@RequestBody final User user) {
+    user.setRegisteredSince(LocalDate.now());
         userRepository.save(user);
     }
 
